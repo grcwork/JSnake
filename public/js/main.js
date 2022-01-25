@@ -20,6 +20,8 @@ for (let i = 0; i < 5; i++) {
     SNAKE;
 }
 
+let score = 5;
+
 // Current direction of the snake
 let xCurrentSnakeDirection = 1;
 let yCurrentSnakeDirection = 0;
@@ -74,16 +76,17 @@ function drawBoard(board) {
       } else if (board[i][j] === FRUIT) {
         upperLeftCornerY = i * squaresSideLength;
         upperLeftCornerX = j * squaresSideLength;
-        ctx.fillStyle = "red";
-        ctx.fillRect(
-          upperLeftCornerX,
-          upperLeftCornerY,
-          squaresSideLength,
-          squaresSideLength
+        ctx.font = "20px monospace";
+        ctx.fillText(
+          "🍎",
+          upperLeftCornerX + Math.floor(squaresSideLength * 0.15),
+          upperLeftCornerY + Math.floor(squaresSideLength * 0.7)
         );
       }
     }
   }
+
+  document.getElementById("score").innerHTML = `Score: ${score}`;
 }
 
 function moveSnake(xSnakeDirection, ySnakeDirection, snakeCoordinates, board) {
@@ -101,6 +104,7 @@ function moveSnake(xSnakeDirection, ySnakeDirection, snakeCoordinates, board) {
     board[oldSnakeTail[0]][oldSnakeTail[1]] = EMPTY;
   } else {
     putFruit(board);
+    score++;
   }
 
   board[newSnakeHead[0]][newSnakeHead[1]] = SNAKE;
@@ -181,6 +185,10 @@ async function gameLoop(snakeCoordinates, board) {
     drawBoard(board);
   }
 }
+
+document.getElementById("restart").addEventListener("click", function () {
+  window.location.reload();
+});
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "ArrowLeft" && xCurrentSnakeDirection === 0) {

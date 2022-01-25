@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/static/js/main.js" defer></script>
+    <link rel="stylesheet" href="/static/css/main.css" />
     <title>JSnake</title>
-</head>
-<body>
-    <div class="game-container">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="game-container">
         <canvas id="game"></canvas>
+        <br />
+        <button id="restart">Restart</button>
+      </div>
+      <div class="stats-container">
+        <p id="score">Score: 20</p>
+      </div>
     </div>
-</body>
+  </body>
 </html>
